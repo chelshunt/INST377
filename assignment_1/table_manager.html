@@ -5,6 +5,40 @@
 	div {
 		margin-bottom: 20px;
 	}
+
+    table {
+  border-collapse: collapse;
+
+}
+
+tr:hover {
+  background-color: #ffa;
+}
+
+td, th {
+  position: relative;
+}
+
+th{
+    border: 1px solid red;
+    font-family: monospace;
+    color: purple;
+    font-size: 18px;
+    font-weight: bolder;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 8px;
+    padding-top: 8px
+
+}
+
+td {
+  border: 1px solid red;
+   padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
 </style>
 
 <!-- Data -->
@@ -208,8 +242,74 @@ console.log(organizations[0]);
 
 // Your JavaScript code goes here
 
+var headers = ['Region', 'Country', 'Country Income Level', 'Organization Name', 'Organization Type', 'Sectors', 'Description', 'City', 'State/Region', 'Founding Year', 'Size', 'Type of Data Used', 'profileID'];
+
+var orgCount = 0;
+var countries = 0;
+var Sectors = 0;
+var profits = 0;
+
+ var table = document.createElement('table');
+  var thead = document.createElement('thead');
+  var tbody = document.createElement('tbody');
+
+function buildTable(labels, objects, container) {
+
+  var theadTr = document.createElement('tr');
+  for (var i = 0; i < labels.length; i++) {
+    var theadTh = document.createElement('th');
+    theadTh.innerHTML = labels[i];
+    theadTr.appendChild(theadTh);
+  }
+  thead.appendChild(theadTr);
+  table.appendChild(thead);
+
+  for (key in objects) {
+    var tbodyTr = document.createElement('tr');
+    orgCount++;
+    for (k in objects[key]) {
+      var tbodyTd = document.createElement('td');
+      tbodyTd.innerHTML = objects[key][k];
+      tbodyTr.appendChild(tbodyTd); 
+
+tbodyTr.onclick = function(){
+        this.parentElement.removeChild(this);
+
+      }
+      var string = tbodyTd.innerHTML;
+      substring = "North America";
+      substring2 = "IT and geospatial"
+      substring3 = "For-profit"
+      if(string.includes(substring)){
+        countries++;
+      }    
+      if(string.includes(substring2)){
+         Sectors++;
+      }
+      if(string.includes(substring3)){
+         profits++;
+      }
+  
+    }
+    tbody.appendChild(tbodyTr);
+  }
+  table.appendChild(tbody);
+
+  container.appendChild(table);
+
+ }
+
+ buildTable(headers, organizations, document.getElementById('org_table'));
+
+
+
+document.write('Number of organizations:' + orgCount + "<br/>");
+
+document.write( 'Number of Unique Countries: ' + countries + "<br/>");
+
+document.write( 'Number organizations in "IT and geospatial" Sector: ' + Sectors + "<br/>");
+document.write('Number of organizations "For-profit": ' + profits + "<br/>");
 
 </script>
-
 </body>
 </html>
