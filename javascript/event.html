@@ -16,24 +16,38 @@
 		.round {
 			border-radius: 20px;
 		}
+
+		#square:hover{
+			cursor: pointer;
+		}
 		
 	</style>
 </head>
 
 <body>
+<<<<<<< HEAD
 	<div id="square" onclick= "show_sentence()"></div>
+=======
+	<div id="square" onclick="show_sentence()"></div>
+>>>>>>> upstream/master
 
 	<div>
 		<p> Hello, this is inside a PPPPP tag. </p>
 	</div>
 
 	<!-- for your exercise, comment this line out.  -->
+<<<<<<< HEAD
     <!--<button onclick="show_sentence()">Put the Sentence</button>
 --> 
+=======
+	<!-- <button onclick="show_sentence()">Put the Sentence</button> -->
+
+>>>>>>> upstream/master
 <script>
 	var flag = false;
 //toggle functionality
 function show_sentence(){
+<<<<<<< HEAD
 	if (flag== true){
 	document.getElementById("square").innerHTML = document.getElementsByTagName("p")[0].innerHTML;
 	flag = false;
@@ -43,6 +57,9 @@ function show_sentence(){
 		
 	}
 
+=======
+	document.getElementById("square").innerHTML = document.getElementsByTagName("p")[0].innerHTML;
+>>>>>>> upstream/master
 }
 var a = {firstName: "John", lastName: "Smith", age: 30, fullName: function(){return this.firstName + " " + this.lastName}}
 
