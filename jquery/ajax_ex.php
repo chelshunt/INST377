@@ -36,16 +36,24 @@ $(document).ready(function(){
 			data: {name: "John Smith"},
 			type: "POST"			
 		});
+<<<<<<< HEAD
 		
 		request1.done(function(data, status){
 			sentence = data;
 			$("#square").text(sentence);			
+=======
+
+		request1.done(function(data, status){
+			sentence = data;
+			$("#square").text(sentence).css("color", "blue");
+>>>>>>> upstream/master
 		});
 
 		var request2 = $.ajax({
 			url: "ajax_answer.php",
 			data: {data: sentence},
 			type: "POST"
+<<<<<<< HEAD
 		});
 
 		request2.done(function(data, status){
@@ -56,6 +64,19 @@ $(document).ready(function(){
 
 		// your code goes here
 
+=======
+		})
+		
+	
+		$.when().then(function(){			
+			request2.done(function(data, status){
+				// display the returned data below the square
+				console.log(data);	
+				// your code goes here	
+			});	
+		});
+
+>>>>>>> upstream/master
 	});
 
 
