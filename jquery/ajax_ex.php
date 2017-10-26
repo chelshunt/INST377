@@ -43,6 +43,7 @@ $(document).ready(function(){
 			$("#square").text(sentence);			
 =======
 
+<<<<<<< HEAD
 		request1.done(function(data, status){
 			sentence = data;
 			$("#square").text(sentence).css("color", "blue");
@@ -66,13 +67,27 @@ $(document).ready(function(){
 
 =======
 		})
+=======
+		
+
+		
+>>>>>>> ee89c8e279eb796626cc938cfcf5f966548ce109
 		
 	
-		$.when().then(function(){			
+		$.when(request1.done(function(data, status){
+			sentence = data;
+			$("#square").text(sentence).css("color", "blue");
+		})).then(function(){	
+			var request2 = $.ajax({
+				url: "ajax_answer.php",
+				data: {data: sentence},
+				type: "POST"
+			})		
 			request2.done(function(data, status){
 				// display the returned data below the square
 				console.log(data);	
 				// your code goes here	
+				$("#square").text(data)
 			});	
 		});
 
